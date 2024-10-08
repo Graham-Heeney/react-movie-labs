@@ -26,7 +26,7 @@ const HomePage = (props) => {
       <Grid size={12}>
         <Header title={"Home Page"} />
       </Grid>
-      <Grid container>
+      <Grid container sx={{flex: "500px 1 0"}}>
         <Grid key="find" size={{xs: 12, sm: 6, md: 4, lg: 3, xl: 2}} sx={{padding: "20px"}}>
           <FilterCard />
         </Grid>
