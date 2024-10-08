@@ -13,16 +13,7 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 
 
 
-const handleChange = (e, type, value) => {
-  e.preventDefault()
-  props.onUserInput(type, value)   // NEW
-}
-const handleTextChange = e => {
-  handleChange(e, "name", e.target.value)
-}
-const handleGenreChange = e => {
-  handleChange(e, "genre", e.target.value)
-};
+
 
 
 const formControl = 
@@ -35,6 +26,18 @@ const formControl =
 export default function FilterMoviesCard(props) {
 
   const [genres, setGenres] = useState([{ id: '0', name: "All" }])
+
+  const handleChange = (e, type, value) => {
+    e.preventDefault()
+    props.onUserInput(type, value)   // NEW
+  }
+  const handleTextChange = e => {
+    handleChange(e, "name", e.target.value)
+  }
+  const handleGenreChange = e => {
+    handleChange(e, "genre", e.target.value)
+  };
+  
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
@@ -80,7 +83,7 @@ export default function FilterMoviesCard(props) {
            defaultValue=""
            value={props.genreFilter}
           onChange={handleGenreChange}
-  >
+              >
             {genres.map((genre) => {
               return (
                 <MenuItem key={genre.id} value={genre.id}>
